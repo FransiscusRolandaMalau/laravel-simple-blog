@@ -9,7 +9,7 @@ class PostController extends Controller
 {
     public function index()
     {
-        return view('posts.index', [
+        return view('admin.pages.posts.index', [
             'posts' => Post::latest()->paginate(10),
         ]);
     }
@@ -17,12 +17,12 @@ class PostController extends Controller
     public function show(Post $post)
     {
         $posts = Post::where('category_id', $post->category_id)->latest()->limit(6)->get();
-        return view('posts.show', compact('post', 'posts'));
+        return view('admin.pages.posts.show', compact('post', 'posts'));
     }
 
     public function create()
     {
-        return view('posts.create', [
+        return view('admin.pages.posts.create', [
                 'post' => new Post(),
                 'categories' => Category::get(),
                 'tags' => Tag::get()
@@ -73,7 +73,7 @@ class PostController extends Controller
 
     public function edit(Post $post)
     {
-        return view('posts.edit', [
+        return view('admin.pages.posts.edit', [
             'post' => $post,
             'categories' => Category::get(),
             'tags' => Tag::get(),

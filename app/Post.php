@@ -6,7 +6,7 @@ use Illuminate\Database\Eloquent\Model;
 
 class Post extends Model
 {
-    protected $fillable = ['title', 'slug', 'body', 'category_id', 'thumbnail'];
+    protected $fillable = ['title', 'slug', 'excerpt', 'body', 'category_id', 'featured_image', 'published', 'published_date'];
     protected $with = ['author', 'category', 'tags'];
 
     public function scopeLatestFirst()

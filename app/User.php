@@ -16,7 +16,7 @@ class User extends Authenticatable
      * @var array
      */
     protected $fillable = [
-        'name', 'username', 'email', 'password',
+        'name', 'username', 'email', 'password', 'bio', 'avatar'
     ];
 
     /**
@@ -47,8 +47,8 @@ class User extends Authenticatable
         return $this->username == 'admin';
     }
 
-    public function gravatar($size = 150)
+    public function gravatar()
     {
-        return "https://www.gravatar.com/avatar/" . md5( strtolower( trim( $this->email ) ) ) . "?d=mp&s=" . $size;
+        return 'https://secure.gravatar.com/avatar/'.md5(strtolower(trim($this->email))).'?d=mp&s=80';
     }
 }
